@@ -20,15 +20,7 @@ RegisterNetEvent('lumberjack:client:PlaceTablesaw', function()
     SetModelAsNoLongerNeeded(itemModel)
     placeableItemUsed = true
 
-    lib.showTextUI("[E] to place\n[X] to rotate\n[G] to cancel",
-    {
-        position = 'right-center',
-        style = {
-            borderRadius = 2,
-            backgroundColor = '#212529',
-            color = '#F8F9FA',
-        },
-    })
+    lib.showTextUI("[E] - place\n[X] - rotate\n[G] - cancel")
 
     while not placeableItemPlaced do
         local hit, entityHit, itemCoords, surface, hash = lib.raycast.cam(1, 7, 10)
