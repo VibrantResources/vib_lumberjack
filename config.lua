@@ -251,13 +251,4 @@ Config.Trees = { -- Locations of trees (Add as many more as you like, there's 10
     vector3(-606.04, 5439.76, 54.9),
     vector3(-598.96, 5443.2, 56.91),
     vector3(-586.32, 5446.95, 59.56),
-    
-
-
-
-
-
-
-
-
 }
