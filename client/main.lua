@@ -9,9 +9,10 @@ local placeableItemPlaced = false
 cuttingWood = false
 
 RegisterNetEvent('lumberjack:client:ProcessWoodIntoPlanks', function(data)
-    local treeLumberAmount = exports.ox_inventory:Search('count', Config.Lumberyard.Processing.Logs.Item)
+    local player = cache.ped
+    local treeLumberAmount = exports.ox_inventory:Search('count', Config.Lumberyard.Processing.logs.item)
 
-    if treeLumberAmount < Config.Lumberyard.Processing.Logs.AmountRequiredToMakePlank then
+    if treeLumberAmount < Config.Lumberyard.Processing.logs.amountRequiredToMakePlank then
         lib.notify({
             title = 'Unable',
             description = "You don't have enough logs to make any planks",
@@ -34,7 +35,6 @@ RegisterNetEvent('lumberjack:client:ProcessWoodIntoPlanks', function(data)
     lib.requestAnimDict('mini@repair')
 
     repeat
-        TaskPlayAnim(cache.ped, 'mini@repair', 'fixing_a_ped', 8.0, 1.0, -1, 1, 0, 0, 0, 0)
         if lib.progressCircle({
             duration = 5000,
             label = 'Cutting planks',
@@ -45,50 +45,50 @@ RegisterNetEvent('lumberjack:client:ProcessWoodIntoPlanks', function(data)
                 move = true,
                 combat = true,
             },
-            -- animation = {
-            --     dict = "anim@amb@clubhouse@tutorial@bkr_tut_ig3@",
-            --     clip = "machinic_loop_mechandplayer",
-            -- },
+            animation = {
+                dict = "mini@repair",
+                clip = "fixing_a_ped",
+            },
         }) then
             TriggerServerEvent('lumberjack:server:ProcessLumber')
-            ClearPedTasks(cache.ped)
-            RemoveAnimDict('mini@repair')
+            ClearPedTasks(player)
         else
             cuttingWood = false
-            ClearPedTasks(cache.ped)
-            RemoveAnimDict('mini@repair')
+            ClearPedTasks(player)
             lib.notify({
                 title = "Canceled",
-                description = 'Canceled',
-                type = 'error'
+                description = 'You stopped cutting wood',
+                type = 'inform'
             })
         end
         Wait(100)
-        treeLumberAmount = exports.ox_inventory:Search('count', Config.Lumberyard.Processing.Logs.Item)
+        treeLumberAmount = exports.ox_inventory:Search('count', Config.Lumberyard.Processing.logs.item)
 
         if treeLumberAmount <= 0 then
             cuttingWood = false
-            ClearPedTasks(cache.ped)
+            ClearPedTasks(player)
+
             return
         end
     until cuttingWood == false
 end)
 
 RegisterNetEvent('lumberjack:client:PackagePlanks', function()
-    local plankAmount = exports.ox_inventory:Search('count', Config.Lumberyard.Processing.Planks.Item)
+    local plankAmount = exports.ox_inventory:Search('count', Config.Lumberyard.Processing.planks.item)
 
-    if plankAmount < Config.Lumberyard.Processing.Planks.AmountOfPlanksPerPallet then
+    if plankAmount < Config.Lumberyard.Processing.planks.amountOfPlanksPerPallet then
         lib.notify({
             title = 'Unable',
             description = "You don't have enough planks to make a pallet",
             type = 'error'
         })
+
         return
     end
 
     if lib.progressCircle({
         duration = 7500,
-        label = 'Bundling Planks ...',
+        label = 'Bundling planks',
         useWhileDead = false,
         canCancel = true,
         disable = {
@@ -127,25 +127,25 @@ RegisterNetEvent('lumberjack:client:HarvestTree', function(data)
 
     if cooldown > 0 then 
         lib.notify({
-            title = 'Busy',
+            title = 'Unable',
             description = 'This tree has been harvested already',
             type = 'error'
         })
         return
     end
 
-    local playerWeapon = GetSelectedPedWeapon(cache.ped)
+    local playerWeapon = GetSelectedPedWeapon(player)
 
     if playerWeapon ~= Config.ChoppingItem then
         lib.notify({
             title = 'Missing Tools',
-            description = "You don't have the right tool for this",
+            description = "You don't have the right equipment for this",
             type = 'error'
         })
         return
     end
     
-    TaskTurnPedToFaceEntity(cache.ped, data.entity, 2500)
+    TaskTurnPedToFaceEntity(player, data.entity, 2500)
 
     if lib.progressCircle({
         duration = 5000,

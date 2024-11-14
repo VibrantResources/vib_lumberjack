@@ -15,7 +15,7 @@ lib.callback.register("lumberjack:server:GetTreeCooldown", function(_, data)
 		savedTimestamp = -1
 	end
 
-	local treeCooldownInSeconds = Config.GenericStuff.TreeCooldown * 60
+	local treeCooldownInSeconds = Config.CoreInfo.TreeCooldown * 60
 	local timeExpires = savedTimestamp + treeCooldownInSeconds
 	local remainingTime = timeExpires - os.time()
 

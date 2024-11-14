@@ -1,13 +1,13 @@
 local alreadyActive = false
 
 CreateThread(function()
-    for _, zoneCoords in pairs(Config.Lumberyard.Processing.Bark.BarkSellingAreas) do
+    for _, zoneCoords in pairs(Config.Lumberyard.Processing.bark.barkSellingAreas) do
         lib.zones.poly({
             points = zoneCoords,
             thickness = 5,
-            debug = Config.GenericStuff.Debug,
+            debug = Config.CoreInfo.Debug,
             inside = function()
-                local barkAmount = exports.ox_inventory:Search('count', Config.Lumberyard.Processing.Bark.Item)
+                local barkAmount = exports.ox_inventory:Search('count', Config.Lumberyard.Processing.bark.item)
 
                 if IsControlJustPressed(0, 38) then
                     if alreadyActive then

@@ -1,6 +1,6 @@
 Config = Config or {}
 
-Config.GenericStuff = {
+Config.CoreInfo = {
     Debug = false,
     UseBlips = true,
     TreeCooldown =  1, -- Cooldown of each tree after being chopped in minutes
@@ -9,37 +9,37 @@ Config.GenericStuff = {
 
 Config.Lumberyard = {
     Foreman = { -- Ped where players can buy equipment and vehicles
-        Model = "s_m_y_construct_01",
-        Location = vector4(-554.62, 5349.31, 73.74, 68.4),
-        Blip = {
-            Location = vector3(-554.62, 5349.31, 74.74),
-            Sprite = 85,
-            Display = 6,
-            Scale = 1.0,
-            Color = 25,
-            Label = 'Lumberyard',
+        model = "s_m_y_construct_01",
+        location = vector4(-554.62, 5349.31, 73.74, 68.4),
+        blip = {
+            location = vector3(-554.62, 5349.31, 74.74),
+            sprite = 85,
+            display = 6,
+            scale = 1.0,
+            color = 25,
+            label = 'Lumberyard',
         },
     },
     Vehicles = { -- Vehicles that display in the menu for players to spawn
-        SpawnLocations = {
+        spawnLocations = {
             vector4(-574.87, 5369.26, 69.77, 249.71),
             vector4(-569.26, 5378.38, 69.72, 288.39),
             vector4(-547.68, 5379.04, 70.03, 85.77),
         },
-        RentableVehicles = {
+        rentableVehicles = {
             {
-                Model = 'bison',
-                Cost = 50,
+                model = 'bison',
+                cost = 50,
             },
             {
-                Model = 'blazer6',
-                Cost = 50,
+                model = 'blazer6',
+                cost = 50,
             },
         },
     },
     Processing = {
-        Bark = {
-            BarkSellingAreas = {
+        bark = {
+            barkSellingAreas = {
                 {
                     vec3(-550.0, 5326.0, 74.0),
                     vec3(-550.0, 5325.0, 74.0),
@@ -48,60 +48,60 @@ Config.Lumberyard = {
                     vec3(-548.0, 5330.0, 74.0),
                 },
             },
-            Item = 'bark',
-            ValuePerBark = 1, -- How much each piece is worth
+            item = 'bark',
+            value = 1, -- How much each piece is worth
         },
-        Logs = {
-            Item = 'lumber',
-            AmountRequiredToMakePlank = 2, -- Amount of [tree_lumber] required to make [AmountOfPlanksMade]
+        logs = {
+            item = 'lumber',
+            amountRequiredToMakePlank = 2, -- Amount of [tree_lumber] required to make [AmountOfPlanksMade]
         },
-        Planks = {
-            Item = 'wood_plank',
-            AmountOfPlanksMade = 1, -- Amount of [wood_plank] recieved per [AmountRequiredToMakePlank]
-            AmountOfPlanksPerPallet = 8,
+        planks = {
+            item = 'wood_plank',
+            amountOfPlanksMade = 1, -- Amount of [wood_plank] recieved per [AmountRequiredToMakePlank]
+            amountOfPlanksPerPallet = 8,
         },
-        Pallets = {
-            PalletTargets = {
+        pallets = {
+            palletTargets = {
                 vector3(-518.07, 5258.04, 80.45),
                 vector3(-516.29, 5263.64, 80.44),
             },
-            Item = 'wood_pallet',
-            AmountOfPalletsMade = 1,
+            item = 'wood_pallet',
+            amountOfPalletsMade = 1,
         },
     },
     EquipmentBuying = {
-        TreeChoppingItem = {
-            Item = 'WEAPON_Hatchet',
-            Price = 295,
+        treeChoppingItem = {
+            item = 'WEAPON_Hatchet',
+            price = 295,
         },
-        TableSawItem = {
-            Item = 'table_saw',
-            Price = 325,
+        tableSawItem = {
+            item = 'table_saw',
+            price = 325,
         },
     },
 }
 
-Config.LumberSelling = { -- Where players sell [tree_lumber] & [wood_pallet]
+Config.LumberSelling = {
     Ped = {
-        Model = "s_m_y_construct_01",
-        Location = vector4(1197.03, -3253.55, 6.09, 87.25)
+        model = "s_m_y_construct_01",
+        location = vector4(1197.03, -3253.55, 6.09, 87.25)
     },
     Blip = {
-        Location = vector3(1197.03, -3253.55, 6.09),
-        Sprite = 477,
-        Display = 6,
-        Scale = 1.0,
-        Color = 25,
-        Label = 'Lumber Sales',
+        location = vector3(1197.03, -3253.55, 6.09),
+        sprite = 477,
+        display = 6,
+        scale = 1.0,
+        color = 25,
+        label = 'Lumber Sales',
     },
     SellableItems = {
-        Lumber = {
-            Item = 'tree_lumber',
-            ValuePerItem = math.random(2, 4),
+        lumber = {
+            item = 'lumber',
+            value = math.random(2, 4),
         },
-        Pallets = {
-            Item = 'wood_pallet',
-            ValuePerItem = math.random(70, 95),
+        pallets = {
+            item = 'wood_pallet',
+            value = math.random(70, 95),
         },
     },
 }

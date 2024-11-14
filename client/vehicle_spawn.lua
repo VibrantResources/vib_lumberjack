@@ -2,7 +2,6 @@ RegisterNetEvent('lumberjack:client:SpawnVehicle', function(data)
     local player = cache.ped
     local lumberVehicle = lib.requestModel(data.Model)
 
-
     for k, v in pairs(Config.Lumberyard.Vehicles.SpawnLocations) do
         if not IsAnyVehicleNearPoint(v.x, v.y, v.z, 5.0) then
             local moneyRemoved = lib.callback.await('lumberjack:server:RemoveVehicleSpawnCost', false, data.Cost)

@@ -6,7 +6,7 @@ RegisterNetEvent('lumberjack:client:SellMenu', function(data)
         title = "Sell Wood Pallets",
         description = "Sell all of your pallets of cut planks",
         serverEvent = 'lumberjack:server:SellItem',
-        args = Config.LumberSelling.SellableItems.Pallets,
+        args = Config.LumberSelling.SellableItems.pallets,
         icon = 'fa-solid fa-hammer',
         iconColor = "yellow",
     }
@@ -15,7 +15,7 @@ RegisterNetEvent('lumberjack:client:SellMenu', function(data)
         title = "Sell Wood Logs",
         description = "Sell all of you raw logs",
         serverEvent = 'lumberjack:server:SellItem',
-        args = Config.LumberSelling.SellableItems.Lumber,
+        args = Config.LumberSelling.SellableItems.lumber,
         icon = 'fa-solid fa-toolbox',
         iconColor = "yellow",
     }

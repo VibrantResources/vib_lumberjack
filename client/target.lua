@@ -6,8 +6,8 @@ CreateThread(function()
     for index, tree in pairs(Config.Trees) do
         exports.ox_target:addSphereZone({
             coords = tree,
-            radius = 1.5,
-            debug = Config.GenericStuff.Debug,
+            distance = 1.5,
+            debug = Config.CoreInfo.Debug,
             options = {
                 {
                     label = "Chop down tree",
@@ -23,12 +23,12 @@ CreateThread(function()
         })
     end
 
-    for index, lumber in pairs(Config.Lumberyard.Processing.Pallets.PalletTargets) do
+    for index, lumber in pairs(Config.Lumberyard.Processing.pallets.palletTargets) do
         exports.ox_target:addBoxZone({
             coords = lumber,
             size = vec(4, 2, 2),
             rotation = 250.0,
-            debug = Config.GenericStuff.Debug,
+            debug = Config.CoreInfo.Debug,
             options = {
                 {
                     label = "Package Planks",
@@ -46,7 +46,7 @@ end)
 ----------------------------------
 
 RegisterNetEvent('lumberjack:client:CreateEntityTarget', function(newEntity, objectPlaced)
-    Wait(500)
+    Wait(300)
     local newEntityNetwork = NetworkGetEntityFromNetworkId(newEntity)
 
     local entityTarget = exports.ox_target:addLocalEntity(newEntityNetwork, {
