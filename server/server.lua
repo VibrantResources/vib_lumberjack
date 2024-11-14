@@ -18,20 +18,6 @@ RegisterNetEvent('lumberjack:server:PurchaseEquipment', function(data)
     end
 end)
 
-RegisterNetEvent('lumberjack:server:ProcessBark', function(data)
-    if exports.ox_inventory:CanCarryItem(source, 'money', data.ValuePerBark * data.ProcessAmountPerTick) then
-        if exports.ox_inventory:RemoveItem(source, data.Item, data.ProcessAmountPerTick) then
-            exports.ox_inventory:AddItem(source, 'money', data.ValuePerBark * data.ProcessAmountPerTick)
-        end
-    else
-        lib.notify(source, {
-            title = 'Unable',
-            description = "Inventory full",
-            type = 'error'
-        })
-    end
-end)
-
 RegisterNetEvent('lumberjack:server:ProcessLumber', function()
 	if exports.ox_inventory:CanCarryItem(source, Config.Lumberyard.Processing.Planks.Item, Config.Lumberyard.Processing.Planks.AmountOfPlanksMade) then
         if exports.ox_inventory:RemoveItem(source, Config.Lumberyard.Processing.Logs.Item, Config.Lumberyard.Processing.Logs.AmountRequiredToMakePlank) then

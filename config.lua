@@ -48,12 +48,11 @@ Config.Lumberyard = {
                     vec3(-548.0, 5330.0, 74.0),
                 },
             },
-            Item = 'tree_bark',
-            ProcessAmountPerTick = 10, -- Amount of [tree_bark] it takes off the player per interaction if they have enough
+            Item = 'bark',
             ValuePerBark = 1, -- How much each piece is worth
         },
         Logs = {
-            Item = 'tree_lumber',
+            Item = 'lumber',
             AmountRequiredToMakePlank = 2, -- Amount of [tree_lumber] required to make [AmountOfPlanksMade]
         },
         Planks = {
