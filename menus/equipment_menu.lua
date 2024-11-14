@@ -1,7 +1,6 @@
 RegisterNetEvent('lumberjack:client:EquipmentMenu', function()
 	local headerMenu = {}
     local moneyAmount = exports.ox_inventory:Search('count', 'money')
-    local description = nil
 
     headerMenu[#headerMenu + 1] = {
         title = "Cutting axe",
@@ -15,7 +14,7 @@ RegisterNetEvent('lumberjack:client:EquipmentMenu', function()
 
     headerMenu[#headerMenu + 1] = {
         title = "Table Saw",
-        description = "Plce this down and start turning your lumber into finely cut planks",
+        description = "Place this down and start turning your lumber into finely cut planks",
         serverEvent = 'lumberjack:server:PurchaseEquipment',
         args = Config.Lumberyard.EquipmentBuying.TableSawItem,
         icon = 'fa-solid fa-fan',
