@@ -3,21 +3,21 @@ RegisterNetEvent('lumberjack:client:VehicleMenu', function(data)
     local moneyAmount = exports.ox_inventory:Search('count', 'money')
     local description = nil
 
-    for k, v in pairs(Config.Lumberyard.Vehicles.RentableVehicles) do
-        if moneyAmount >= v.Cost then
-            description = "Rent "..v.Model.." for $"..v.Cost
+    for k, v in pairs(Config.Lumberyard.Vehicles.rentableVehicles) do
+        if moneyAmount >= v.cost then
+            description = "Rent "..v.model.." for $"..v.cost
         else
-            description = "You can't afford to rent this "..v.Model
+            description = "You can't afford to rent this "..v.model
         end
 
         headerMenu[#headerMenu + 1] = {
-            title = v.Model,
+            title = v.model,
             description = description,
             event = 'lumberjack:client:SpawnVehicle',
             icon = 'fa-solid fa-hammer',
             iconColor = "yellow",
             args = v,
-            readOnly = v.Cost > moneyAmount,
+            readOnly = v.cost > moneyAmount,
         }
     end
 

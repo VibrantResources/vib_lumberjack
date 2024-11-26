@@ -32,7 +32,7 @@ Config.Lumberyard = {
                 cost = 50,
             },
             {
-                model = 'blazer6',
+                model = 'blazer',
                 cost = 50,
             },
         },

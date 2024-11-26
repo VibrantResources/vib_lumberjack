@@ -1,10 +1,10 @@
 RegisterNetEvent('lumberjack:client:SpawnVehicle', function(data)
     local player = cache.ped
-    local lumberVehicle = lib.requestModel(data.Model)
+    local lumberVehicle = lib.requestModel(data.model)
 
-    for k, v in pairs(Config.Lumberyard.Vehicles.SpawnLocations) do
+    for k, v in pairs(Config.Lumberyard.Vehicles.spawnLocations) do
         if not IsAnyVehicleNearPoint(v.x, v.y, v.z, 5.0) then
-            local moneyRemoved = lib.callback.await('lumberjack:server:RemoveVehicleSpawnCost', false, data.Cost)
+            local moneyRemoved = lib.callback.await('lumberjack:server:RemoveVehicleSpawnCost', false, data.cost)
 
             if not moneyRemoved then
                 lib.notify({
@@ -21,7 +21,6 @@ RegisterNetEvent('lumberjack:client:SpawnVehicle', function(data)
                 SetVehicleNumberPlateText(jobVehicle, plate)
                 SetEntityHeading(jobVehicle, v.w)
                 Entity(jobVehicle).state.fuel = 100
-                TaskWarpPedIntoVehicle(player, jobVehicle, -1)
                 TriggerEvent("vehiclekeys:client:SetOwner", QBCore.Functions.GetPlate(jobVehicle))
                 SetVehicleEngineOn(jobVehicle, true, true)
             end, v, true)
